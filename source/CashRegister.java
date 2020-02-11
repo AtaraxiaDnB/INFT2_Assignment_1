@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class CashRegister
@@ -6,7 +7,7 @@ public class CashRegister
    {
       String s = "", c = "";
       double balance;
-      String loop = "y";
+      String mainMenu = "y";
 
       Scanner in = new Scanner(System.in);
 
@@ -14,26 +15,43 @@ public class CashRegister
       s = in.nextLine();
       balance = Double.parseDouble(s);
 
-      while(loop.equals("y"))
+      while(mainMenu.equals("y"))
       {
          System.out.println("Would you like to proccess a transaction? (y/n) ");
-         loop = in.next().toLowerCase();
+         mainMenu = in.nextLine().toLowerCase();
 
-         System.out.print("Please enter the item's name: ");
-         s = in.nextLine();
+         Transaction currentTransaction = new Transaction();
 
-         System.out.print("Please enter the item's cost: $");
-         c = in.nextLine();
+         String itemMenu = "y";
 
-         Transaction trans = new Transaction(s, Double.parseDouble(c));
+         while(itemMenu.equals("y"))
+         {
+            String itemName = "";
+            String itemCost = "";
+
+            System.out.println("Please enter the item's name: ");
+            itemName = in.nextLine();
+
+            System.out.println("Please enter the item's cost: $");
+            itemCost = in.nextLine();
+
+            currentTransaction.addItem(new Item(itemName, Double.parseDouble(itemCost)));
+
+
+            System.out.println("Would you like to add another item? (y/n) ");
+            itemMenu = in.nextLine().toLowerCase();
+
+
+         }
 
          System.out.print("Please enter the cash amount tendered: $");
          s = in.nextLine();
-         c = Double.toString(Double.parseDouble(s) - trans.getCost());
 
-         System.out.println("Amount of change required = $" + c);
+         currentTransaction.calculateChange(Double.parseDouble(s));
 
-         c = Double.toString(balance + trans.getCost());
+         System.out.println("Amount of change required = $" + currentTransaction.change());
+
+         c = Double.toString(balance + currentTransaction.total());
       }
 
       System.out.println("Balance of the Cash Register: $" + c);

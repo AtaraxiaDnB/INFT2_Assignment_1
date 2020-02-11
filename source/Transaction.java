@@ -1,27 +1,66 @@
+import java.util.ArrayList;
+
 public class Transaction
 {
-   private String name;
-   private double cost;
+   private ArrayList<Item> _cart = new ArrayList<Item>();
+   private double _total;
+   private double _amountTendered;
+   private double _change;
+   private int _numOfItems;
 
-   public Transaction(String name, double cost) {
-      this.name = name;
-      this.cost = cost;
+   public Transaction() {
+
    }
 
-   public double getCost() {
-      return cost*2;
+   public ArrayList cart() {
+      return _cart;
    }
 
-   public void setCost(double cost) {
-      this.cost = cost;
+   public double total() {
+      return _total;
    }
 
-   public String getName() {
-      return name;
+   public double amountTendered() {
+      return _amountTendered;
    }
 
-   public void setName(String name) {
-      this.name = name;
+   public double change() {
+      return _change;
+   }
+
+   public int numOfItems() {
+      return _numOfItems;
+   }
+
+   public Item item(int index) {
+      return _cart.get(index);
+   }
+
+   public void addItem(Item item) {
+      _cart.add(item);
+
+      this.calculateTotal();
+   }
+
+   public void addItem(int index, Item item) {
+      _cart.add(index, item);
+      _numOfItems++;
+      this.calculateTotal();
+   }
+
+   public void calculateChange(Double amountTendered) {
+      _amountTendered = amountTendered;
+      _change = amountTendered - _total;
+       }
+
+   public void printReceipt() {
+
+   }
+
+   private void calculateTotal() {
+      for (int i = 0; i < _cart.size(); i++) {
+         _total += _cart.get(i).cost();
+      }
    }
 
 }
