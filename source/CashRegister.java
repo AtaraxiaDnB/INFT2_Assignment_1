@@ -53,8 +53,11 @@ public class CashRegister
 
       Scanner in = new Scanner(System.in);
 
+      System.out.println("Welcome to the cash register");
+      
       System.out.print("Please enter cash register's float: $");
       s = in.nextLine();
+
       CashRegister register = new CashRegister(Double.parseDouble(s));
 
       while(mainMenu.equals("y"))
