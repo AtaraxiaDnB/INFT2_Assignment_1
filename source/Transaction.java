@@ -4,8 +4,6 @@ public class Transaction
 {
    private ArrayList<Item> _cart = new ArrayList<Item>();
    private double _total;
-   private double _amountTendered;
-   private double _change;
    private int _numOfItems;
 
    public Transaction() {
@@ -18,14 +16,6 @@ public class Transaction
 
    public double total() {
       return _total;
-   }
-
-   public double amountTendered() {
-      return _amountTendered;
-   }
-
-   public double change() {
-      return _change;
    }
 
    public int numOfItems() {
@@ -46,15 +36,6 @@ public class Transaction
       _cart.add(index, item);
       _numOfItems++;
       this.calculateTotal();
-   }
-
-   public void calculateChange(Double amountTendered) {
-      _amountTendered = amountTendered;
-      _change = amountTendered - _total;
-       }
-
-   public void printReceipt() {
-
    }
 
    private void calculateTotal() {
