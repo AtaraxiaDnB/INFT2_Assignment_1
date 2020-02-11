@@ -54,7 +54,7 @@ public class CashRegister
       Scanner in = new Scanner(System.in);
 
       System.out.println("Welcome to the cash register");
-      
+
       System.out.print("Please enter cash register's float: $");
       s = in.nextLine();
 
@@ -106,5 +106,6 @@ public class CashRegister
 
       System.out.println("Balance of the Cash Register: $" + c);
 
+      
    }
 }
