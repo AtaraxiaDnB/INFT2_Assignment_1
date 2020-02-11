@@ -105,6 +105,7 @@ public class CashRegister
       }
 
       System.out.println("Balance of the Cash Register: $" + c);
+
       
    }
 }
