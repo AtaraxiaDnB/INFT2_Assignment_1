@@ -4,7 +4,7 @@ public class CashRegister
 {
    public static void main(String[] args)
    {
-      String s, c;
+      String s = "", c = "";
       double balance;
       String loop = "y";
 
@@ -34,9 +34,9 @@ public class CashRegister
          System.out.println("Amount of change required = $" + c);
 
          c = Double.toString(balance + trans.getCost());
-
-         System.out.println("Balance of the Cash Register: $" + c);
       }
+
+      System.out.println("Balance of the Cash Register: $" + c);
 
    }
 }
