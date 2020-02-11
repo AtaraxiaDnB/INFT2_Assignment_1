@@ -10,7 +10,7 @@ public class Transaction
 
    }
 
-   public ArrayList cart() {
+   public ArrayList<Item> cart() {
       return _cart;
    }
 

@@ -32,6 +32,19 @@ public class CashRegister
       _change = amountTendered - _currentTransaction.total();
    }
 
+   public void printReceipt() {
+      System.out.println("items" );
+      System.out.println("----------" );
+      for(Item object: _currentTransaction.cart()) {
+         System.out.println(object.name() +" - $" + object.cost());
+      }
+      System.out.println("----------" );
+      System.out.println("total:    $" + _currentTransaction.total());
+      System.out.println("tendered: $" + _amountTendered);
+      System.out.println("Change:   $" + _change);
+
+   }
+
    public static void main(String[] args)
    {
       String s = "", c = "";
@@ -81,8 +94,8 @@ public class CashRegister
          System.out.println("Would you like to print a receipt? y/n ");
          s = in.nextLine();
 
-         if(s == "y") {
-
+         if(s.equals("y")) {
+            register.printReceipt();
          }
 
          c = Double.toString(register.balance() + register.currentTransaction().total());
